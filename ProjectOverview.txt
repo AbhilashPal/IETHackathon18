@@ -1,0 +1,10 @@
+Fake News
+
+1 - Tweepy = fake news dataset making, extract useful data. Train a model on that. 
+	1.1 - Sentiment. Use it as a parameter. Like sentiments of the comments or retweets on a specific post.
+2 - Save the model. Write a script to run that same model every day. 
+3 - 3.1 Take a basic text input and classify as real or fake
+
+    3.2 Run using selenium or bs or etc web scraping to analyse twitter and facebook user data.
+		3.1.1 - feed the data of a new tweet to the already trained model and get it as good or bad/
+4 - If bad, flag and report else skip.
