@@ -2,7 +2,7 @@
 Code written for track 3(Fake news) of IET Hackathon in Chennai.
 
 # Updated Video for the Project
-https://www.youtube.com/watch?v=0LQ5_sKD9uQ
+https://www.youtube.com/watch?v=UVqFzS9j6E4&feature=youtu.be
 
 # Documentation in the files.
 doc.pdf
