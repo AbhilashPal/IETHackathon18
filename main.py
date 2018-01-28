@@ -18,10 +18,7 @@ import googlesearch
 import twittersearch
 # Setting up the API
 
-def run(sr):
-
-
-
+def run(sr,mode):
 	Vectorfile,vec = filetokenize.getFileVector("fake_or_real_news.csv")
 	Y = filetokenize.getlabels("fake_or_real_news.csv")
 	for i in range(len(Y)):
@@ -60,18 +57,35 @@ def run(sr):
 	with open('model.pickle','rb') as f:
 		classifier = pickle.load(f)
 
-	L = []
-	L.append(sr)
-	RunX = filetokenize.fitnewtoken(L,vec)
-	RunY = classifier.predict(RunX)
-	if RunY[0]=="0":
-		print("According to Database : REAL news")
+	if mode==0:
+		L = []
+		L.append(sr)
+		RunX = filetokenize.fitnewtoken(L,vec)
+		RunY = classifier.predict(RunX)
+		if RunY[0]=="0":
+			print("According to Database : REAL news")
+		else:
+			print("According to Database : FAKE news")
+		
+		twittersearch.returnsentiment(sr)
 	else:
-		print("According to Database : FAKE news")
-
-	#if googlesearch.getresult(sr):
-	#	print("According to Internet : REAL news")
-	#else:
-	#	print("According to Internet : FAKE news")
-	
-	twittersearch.returnsentiment(sr)
+		import matplotlib.pyplot as plt
+		import matplotlib
+		matplotlib.style.use('ggplot')
+		twittersearch.getgraphics(sr)
+		L = twittersearch.returntweets(sr)
+		RunX = filetokenize.fitnewtoken(L,vec)
+		RunY = classifier.predict(RunX)
+		f=0
+		r=0
+		for i in RunY:
+			if i=='0':
+				f+=1
+			else:
+				r+=1
+		fig, ax = plt.subplots()
+		plt.bar(x=[10,20],height=[f,r])
+		plt.title("Bar Chart of Last 1000 examples in Twitter History")
+		plt.xlabel("Type of news Detected(FAKE/REAL)")
+		plt.ylabel("Examples encountered")
+		plt.show()
