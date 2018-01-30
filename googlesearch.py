@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 def getresult(a):
-	driver = webdriver.Chrome("C:\Python35\selenium\chromedriver_win32\chromedriver.exe")         #path to chromedriver
+	driver = webdriver.Chrome("C:\Python35\selenium\chromedriver_win32\chromedriver.exe\chromedriver")         #path to chromedriver
 	driver.set_page_load_timeout(20)
 	driver.get("https://www.google.co.in/?gws_rd=ssl")
 	driver.maximize_window()
